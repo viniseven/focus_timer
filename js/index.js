@@ -13,7 +13,6 @@ const minutesDisplay = document.querySelector('.minutes')
 const secondsDisplay = document.querySelector('.seconds')
 
 let minutes = Number(minutesDisplay.textContent)
-let timerTimeOut
 
 const controls = Controls({
     btnPause,
@@ -25,8 +24,8 @@ const controls = Controls({
 const timer = Timer({
     minutesDisplay,
     secondsDisplay,
-    timerTimeOut,
-    resetControls: controls.reset
+    resetControls: controls.reset,
+    minutes
 })
 
 btnPlay.addEventListener('click', () => {
@@ -36,7 +35,7 @@ btnPlay.addEventListener('click', () => {
 
 btnPause.addEventListener('click', () => {
     controls.pauseTimer()
-    clearTimeout(timerTimeOut)
+    timer.hold()
 })
 
 btnStop.addEventListener('click', () =>{
@@ -64,6 +63,7 @@ btnConfigTime.addEventListener('click', () => {
 
     minutes = newMinutes
     timer.updateDisplay(minutes, 0)
+    timer.updateMinutes(minutes)
 })
 
 
