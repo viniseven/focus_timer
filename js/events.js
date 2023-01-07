@@ -1,46 +1,39 @@
-import {  
-    btnPlay,
-    btnPause,
-    btnStop,
-    btnSoundOn,
-    btnSoundOff,
-    btnConfigTime
-} from "./elements.js";
+import { elements } from "./elements.js";
 
 export default function(
     { controls, timer, sound }
 ) {
-    btnPlay.addEventListener('click', () => {
+    elements.btnPlay.addEventListener('click', () => {
         controls.playTimer()
         timer.countdown()
         sound.pressButton()
     })
     
-    btnPause.addEventListener('click', () => {
+    elements.btnPause.addEventListener('click', () => {
         controls.pauseTimer()
         timer.hold()
         sound.pressButton()
     })
     
-    btnStop.addEventListener('click', () =>{
+    elements.btnStop.addEventListener('click', () =>{
         controls.reset()
         timer.resetTimer()
         sound.pressButton()
     })
     
-    btnSoundOn.addEventListener('click', () => {
-        btnSoundOn.classList.add('hide')
-        btnSoundOff.classList.remove('hide')
-        sound.bgAudioStart()
-    })
-    
-    btnSoundOff.addEventListener('click', () => {
-        btnSoundOff.classList.add('hide')
-        btnSoundOn.classList.remove('hide')
+    elements.btnSoundOn.addEventListener('click', () => {
+        elements.btnSoundOn.classList.add('hide')
+        elements.btnSoundOff.classList.remove('hide')
         sound.bgAudioStop()
     })
     
-    btnConfigTime.addEventListener('click', () => {
+    elements.btnSoundOff.addEventListener('click', () => {
+        elements.btnSoundOff.classList.add('hide')
+        elements.btnSoundOn.classList.remove('hide')
+        sound.bgAudioStart()
+    })
+    
+    elements.btnConfigTime.addEventListener('click', () => {
         let newMinutes = controls.getMinutes()
     
         if(!newMinutes){
