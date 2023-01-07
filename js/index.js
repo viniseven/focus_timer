@@ -12,7 +12,6 @@ const btnSoundOff = document.querySelector('.sound-off')
 const minutesDisplay = document.querySelector('.minutes')
 const secondsDisplay = document.querySelector('.seconds')
 
-let minutes = Number(minutesDisplay.textContent)
 
 const controls = Controls({
     btnPause,
@@ -25,7 +24,6 @@ const timer = Timer({
     minutesDisplay,
     secondsDisplay,
     resetControls: controls.reset,
-    minutes
 })
 
 btnPlay.addEventListener('click', () => {
@@ -60,10 +58,9 @@ btnConfigTime.addEventListener('click', () => {
         timer.reset()
         return
     }
-
-    minutes = newMinutes
-    timer.updateDisplay(minutes, 0)
-    timer.updateMinutes(minutes)
+    
+    timer.updateDisplay(newMinutes, 0)
+    timer.updateDisplay(newMinutes)
 })
 
 

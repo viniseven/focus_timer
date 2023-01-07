@@ -6,6 +6,9 @@ export default function Timer({
     minutes
 }){
 
+    let timerTimeOut
+    let minutes = Number(minutesDisplay.textContent)
+
     function updateDisplay(minutes, seconds){
         minutesDisplay.textContent = String(minutes).padStart(2, "0")
         secondsDisplay.textContent = String(seconds).padStart(2, "0")
